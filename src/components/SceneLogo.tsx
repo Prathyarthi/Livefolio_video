@@ -1,7 +1,7 @@
 import { Img, staticFile } from "remotion";
 import { C, FONT_DISPLAY } from "./GradientBg";
 
-type Props = { size?: number };
+type Props = { size?: number; variant?: "light" | "dark" };
 
 export const BrandMark: React.FC<{ size?: number }> = ({ size = 40 }) => (
   <Img
@@ -34,7 +34,7 @@ export const LivefolioLogo: React.FC<{ markSize?: number; color?: string }> = ({
   </div>
 );
 
-export const SceneLogo: React.FC<Props> = ({ size = 38 }) => (
+export const SceneLogo: React.FC<Props> = ({ size = 38, variant = "dark" }) => (
   <div style={{
     position: "absolute",
     top: 28,
@@ -43,7 +43,7 @@ export const SceneLogo: React.FC<Props> = ({ size = 38 }) => (
     display: "flex",
     alignItems: "center",
   }}>
-    <LivefolioLogo markSize={size} />
+    <LivefolioLogo markSize={size} color={variant === "light" ? "#FBFAF7" : C.ink} />
   </div>
 );
 

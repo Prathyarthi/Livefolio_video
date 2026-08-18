@@ -4,16 +4,18 @@ import { fade } from "@remotion/transitions/fade";
 import { slide } from "@remotion/transitions/slide";
 import { wipe } from "@remotion/transitions/wipe";
 
-import { HookScene }      from "./scenes/HookScene";
-import { BrandScene }     from "./scenes/BrandScene";
-import { SyncScene }      from "./scenes/SyncScene";
-import { DashboardScene } from "./scenes/DashboardScene";
-import { AIScene }        from "./scenes/AIScene";
-import { CTAScene }       from "./scenes/CTAScene";
+import { HookScene }       from "./scenes/HookScene";
+import { BrandScene }      from "./scenes/BrandScene";
+import { SyncScene }       from "./scenes/SyncScene";
+import { DashboardScene }  from "./scenes/DashboardScene";
+import { AIScene }         from "./scenes/AIScene";
+import { ColorsScene }     from "./scenes/ColorsScene";
+import { AnalyticsScene }  from "./scenes/AnalyticsScene";
+import { CTAScene }        from "./scenes/CTAScene";
 
-// 30s @ 30fps = 900 total frames
-// 5 transitions × 20f = 100 overlap frames
-// Scene frames must sum to 1000 → net 900
+// ~36s @ 30fps = 1070 total frames
+// 7 transitions × 20f = 140 overlap frames
+// Scene frames sum to 1210 → net 1070
 
 const TRANSITION_FRAMES = 20;
 
@@ -23,8 +25,8 @@ const timing = (durationInFrames = TRANSITION_FRAMES) =>
 export const LivefolioVideo: React.FC = () => (
   <AbsoluteFill style={{ background: "#FBFAF7" }}>
     <TransitionSeries>
-      {/* Hook — 130f (4.3s) */}
-      <TransitionSeries.Sequence durationInFrames={130}>
+      {/* Hook — 120f */}
+      <TransitionSeries.Sequence durationInFrames={120}>
         <HookScene />
       </TransitionSeries.Sequence>
 
@@ -33,8 +35,8 @@ export const LivefolioVideo: React.FC = () => (
         timing={timing()}
       />
 
-      {/* Brand reveal — 180f (6s) */}
-      <TransitionSeries.Sequence durationInFrames={180}>
+      {/* Brand reveal — 165f */}
+      <TransitionSeries.Sequence durationInFrames={165}>
         <BrandScene />
       </TransitionSeries.Sequence>
 
@@ -43,8 +45,8 @@ export const LivefolioVideo: React.FC = () => (
         timing={timing()}
       />
 
-      {/* GitHub sync — 160f (5.3s) */}
-      <TransitionSeries.Sequence durationInFrames={160}>
+      {/* Resume → portfolio in seconds — 145f */}
+      <TransitionSeries.Sequence durationInFrames={145}>
         <SyncScene />
       </TransitionSeries.Sequence>
 
@@ -53,8 +55,8 @@ export const LivefolioVideo: React.FC = () => (
         timing={timing()}
       />
 
-      {/* Dashboard mockup — 175f (5.8s) */}
-      <TransitionSeries.Sequence durationInFrames={175}>
+      {/* Edit + live preview — 155f */}
+      <TransitionSeries.Sequence durationInFrames={155}>
         <DashboardScene />
       </TransitionSeries.Sequence>
 
@@ -63,8 +65,8 @@ export const LivefolioVideo: React.FC = () => (
         timing={timing()}
       />
 
-      {/* Template showcase — 155f (5.2s) */}
-      <TransitionSeries.Sequence durationInFrames={155}>
+      {/* Templates — 145f */}
+      <TransitionSeries.Sequence durationInFrames={145}>
         <AIScene />
       </TransitionSeries.Sequence>
 
@@ -73,8 +75,28 @@ export const LivefolioVideo: React.FC = () => (
         timing={timing()}
       />
 
-      {/* CTA — 200f (6.7s) */}
-      <TransitionSeries.Sequence durationInFrames={200}>
+      {/* Custom colors — 135f */}
+      <TransitionSeries.Sequence durationInFrames={135}>
+        <ColorsScene />
+      </TransitionSeries.Sequence>
+
+      <TransitionSeries.Transition
+        presentation={slide({ direction: "from-right" })}
+        timing={timing()}
+      />
+
+      {/* Portfolio analytics — 155f */}
+      <TransitionSeries.Sequence durationInFrames={155}>
+        <AnalyticsScene />
+      </TransitionSeries.Sequence>
+
+      <TransitionSeries.Transition
+        presentation={fade()}
+        timing={timing()}
+      />
+
+      {/* CTA — 190f */}
+      <TransitionSeries.Sequence durationInFrames={190}>
         <CTAScene />
       </TransitionSeries.Sequence>
     </TransitionSeries>

@@ -1,5 +1,5 @@
 import { AbsoluteFill } from "remotion";
-import { GradientBg, C, FONT_DISPLAY } from "../components/GradientBg";
+import { GradientBg, C, FONT_DISPLAY, FONT_BODY } from "../components/GradientBg";
 import { AnimatedText } from "../components/AnimatedText";
 import { DashboardMockup } from "../components/DashboardMockup";
 import { SceneLogo } from "../components/SceneLogo";
@@ -9,26 +9,33 @@ export const DashboardScene: React.FC = () => (
     <GradientBg tint="none" />
     <SceneLogo />
     <AbsoluteFill style={{
-      display: "flex", flexDirection: "column",
-      alignItems: "center", justifyContent: "center",
-      padding: "0 40px", gap: 22,
+      display: "flex",
+      flexDirection: "column",
+      padding: "80px 48px 32px",
+      gap: 18,
     }}>
-      <AnimatedText delay={0} direction="up" style={{ textAlign: "center" }}>
+      <AnimatedText delay={0} direction="up">
         <div style={{
-          fontSize: 12, fontWeight: 600, color: C.brand,
+          fontSize: 11, fontWeight: 700, color: C.ink,
           letterSpacing: "0.14em", textTransform: "uppercase",
-          fontFamily: FONT_DISPLAY, marginBottom: 12,
-        }}>Make it unmistakably yours</div>
+          fontFamily: FONT_DISPLAY, marginBottom: 8,
+        }}>Live editor</div>
         <div style={{
-          fontSize: 44, fontWeight: 800, color: C.text,
-          fontFamily: FONT_DISPLAY,
-          letterSpacing: "-0.025em", lineHeight: 1.15,
+          fontSize: 32, fontWeight: 800, color: C.text,
+          fontFamily: FONT_DISPLAY, letterSpacing: "-0.03em", lineHeight: 1.15,
         }}>
-          Edit on the left.{" "}
-          <span style={{ color: C.brand }}>See it live on the right.</span>
+          Change it here.{" "}
+          <span style={{ color: C.brand }}>See it there.</span>
+        </div>
+        <div style={{
+          fontSize: 14, color: C.textSub, fontFamily: FONT_BODY, marginTop: 6,
+        }}>
+          Every edit updates your preview in real time — profile, projects, skills, all of it.
         </div>
       </AnimatedText>
-      <DashboardMockup delay={12} />
+      <div style={{ display: "flex", justifyContent: "center", flex: 1, alignItems: "flex-start" }}>
+        <DashboardMockup delay={10} scale={0.78} />
+      </div>
     </AbsoluteFill>
   </AbsoluteFill>
 );

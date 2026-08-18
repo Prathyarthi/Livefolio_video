@@ -44,7 +44,7 @@ const ProjectCard: React.FC<{ title: string; delay: number }> = ({ title, delay 
   );
 };
 
-export const DashboardMockup: React.FC<{ delay?: number }> = ({ delay = 0 }) => {
+export const DashboardMockup: React.FC<{ delay?: number; scale?: number }> = ({ delay = 0, scale = 1 }) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
   const mount = spring({ frame: frame - delay, fps, config: { damping: 20, stiffness: 70 } });
@@ -52,11 +52,14 @@ export const DashboardMockup: React.FC<{ delay?: number }> = ({ delay = 0 }) => 
     extrapolateLeft: "clamp",
     extrapolateRight: "clamp",
   });
+  const mountScale = interpolate(mount, [0, 1], [0.96, 1]);
 
   return (
+    <div style={{ width: 1020 * scale, height: 470 * scale, flexShrink: 0 }}>
     <div style={{
       opacity: interpolate(mount, [0, 1], [0, 1]),
-      transform: `translateY(${interpolate(mount, [0, 1], [34, 0])}px) scale(${interpolate(mount, [0, 1], [0.94, 1])})`,
+      transform: `translateY(${interpolate(mount, [0, 1], [18, 0])}px) scale(${mountScale * scale})`,
+      transformOrigin: "top left",
       width: 1020,
       height: 470,
       overflow: "hidden",
@@ -125,7 +128,7 @@ export const DashboardMockup: React.FC<{ delay?: number }> = ({ delay = 0 }) => 
             </div>
           ))}
           <div style={{
-            marginTop: 76,
+            marginTop: 48,
             padding: 9,
             border: `1px solid ${C.border}`,
             borderRadius: 8,
@@ -242,6 +245,7 @@ export const DashboardMockup: React.FC<{ delay?: number }> = ({ delay = 0 }) => 
           </div>
         </main>
       </div>
+    </div>
     </div>
   );
 };
