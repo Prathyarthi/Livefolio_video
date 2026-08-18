@@ -70,7 +70,7 @@ export const CTAScene: React.FC = () => {
           fontSize: 15, color: C.textMuted, textAlign: "center",
           fontFamily: FONT_BODY, maxWidth: 480, lineHeight: 1.5,
         }}>
-          Join 200+ creators on livefolio.me — build, customize, and track your reach.
+          Join 200+ users from 40+ companies — 5,000+ page views and counting.
         </div>
 
         <div style={{

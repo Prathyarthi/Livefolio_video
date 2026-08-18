@@ -70,7 +70,7 @@ export const BrandScene: React.FC = () => {
             <span style={{ color: C.brand }}>professional story.</span>
           </div>
           <div style={{ fontSize: 16, color: C.textSub, fontFamily: FONT_BODY }}>
-            From first draft to live site — no code, no friction.
+            5,000+ page views · 200+ users · 40+ companies.
           </div>
         </div>
 
